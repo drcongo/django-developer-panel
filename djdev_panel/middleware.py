@@ -172,6 +172,9 @@ class DebugMiddleware:
 
     def process_template_response(self, request, response):
 
+        if not hasattr(response, 'context_data'):
+            return response
+
         if response.context_data is None:
             return response
 
